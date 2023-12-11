@@ -1,0 +1,61 @@
+/your-flask-project               # Root directory of the Flask project
+    /instance
+        /config.py                # Instance-specific configurations that shouldn't be version-controlled 
+    /app                          # Main application package
+        /static                   # Directory for static files (CSS, JavaScript, Images)
+            /css                  # CSS files to style the web app
+            /js                   # JavaScript files to add interactivity to the web app
+            /images               # Image files used in the web app
+        /templates                # Templates directory containing HTML templates
+            /auth                 # Authentication related HTML templates (login, register)
+            /errors               # Error page templates (404, 500, etc.)
+            /layouts              # Base layout templates (header, footer, etc.)
+            /search               # Search feature related templates
+            /documents            # Document preview and download templates
+        /main                     # Main blueprint for core frontend functionality
+            __init__.py           # Initializes the 'main' blueprint
+            views.py              # Route definitions for the main section of the app
+            errors.py             # Error handlers for the main blueprint
+        /auth                     # Authentication blueprint for user management (login, logout, register)
+            __init__.py           # Initializes the 'auth' blueprint
+            views.py              # Route definitions for authentication. It processes requests for user registration, logging in, logging out, etc.
+            forms.py              # WTForms for login and registration
+        /search                   # Search blueprint for search functionality
+            __init__.py           # Initializes the 'search' blueprint
+            views.py              # 
+            forms.py              # WTForms for search queries
+            services.py           # Services for handling search operations 
+        /models                   # Models directory for SQLAlchemy ORM models
+            __init__.py           # Allows model imports from 'models'
+            user_model.py         # User model definition
+            document.py           # Document model definition for storing document-related info
+            ... other models ...
+        /services                 # Business logic layer
+            __init__.py           # Makes the services package importable
+            pinecone_service.py   # Interface with Pinecone API for search operations
+            openai_service.py     # Interface with OPENAI API for embedding
+            bert_service.py       # Summarization service using BERT or T5
+            heatmap_service.py    # Data aggregation for heatmap visualization
+            trends_service.py     # Service for trending topic analysis
+            ... other services ...
+        /util                     # Utility functions and classes
+            __init__.py           # Makes utility functions and classes importable
+            helpers.py            # Helper functions used across the application
+            ... other utility modules ...
+    /migrations                   # Database migration scripts managed by Alembic
+        /versions                 # Individual migration scripts
+    /tests                        # Test package containing all test modules
+        __init__.py               # Makes the tests directory a package and can be used for test discovery
+        /test_auth.py             # Contains tests for the authentication blueprint (login, registration, session management, etc.).
+        /test_search.py                      # Contains tests for the search functionality, including query processing and result validation.
+        /test_document_management.py         # Contains tests for document management functionality, such as CRUD operations and metadata handling.
+        /test_services.py                    # Contains tests for the service layer, ensuring services work correctly (like Pinecone service).
+        /test_utility_functions.py           # Contains tests for various utility functions used throughout the application for consistency.
+        /test_main_routes.py                 # Contains tests for the routes defined in the 'main' blueprint of the application (home, about page, etc.).
+        /test_api.py                         # Contains tests for all RESTful API endpoints, checking for correct behavior and HTTP response codes.
+        /test_configuration.py               # Contains tests to ensure that configuration settings are loaded and applied correctly.
+    .flaskenv                     # Environment variables for Flask loaded automatically by python-dotenv
+    config.py                     # Configuration settings that are common across all instances of the app
+    app.py                        # Main entry point of the Flask application
+    .gitignore                    # Specifies intentionally untracked files to ignore by git
+    requirements.txt              # All the package dependencies required for the project
